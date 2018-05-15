@@ -1,0 +1,12 @@
+#!/bin/env bash
+
+if [ $# -eq 1 ]; then
+        asn=$1
+
+else
+        echo "Enter ASN numeric:"
+        read asn
+fi
+
+echo routed networks:
+curl -s "https://www.enjen.net/asn-blocklist/index.php?asn=$asn&type=json&api=1" | jq '.ips[]'
